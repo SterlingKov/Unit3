@@ -229,4 +229,74 @@ def shuffled_deck():
     random.shuffle(basic_deck)
     return basic_deck
 
-shuffled_deck()
+
+
+while True:
+    deck = shuffled_deck()
+
+    input("press ENTER to start a game")
+    print("THIS IS WAR")
+
+    p1name = input("Player 1's name: ")
+    p2name = input("Player 2's name: ")
+    running = True
+    while running:
+
+        p1score = 0
+        p2score = 0
+
+        p1draw = deck[random.randint(0, len(deck)-1)]
+        deck.pop(deck.index(p1draw))
+        p2draw = deck[random.randint(0, len(deck)-1)]
+        deck.pop(deck.index(p2draw))
+
+        print(f"{p1name} drew card {p1draw}")
+        print(f"{p2name} drew card {p2draw}")
+
+        if p1draw > p2draw:
+            print(f"{p1name} drew the high card")
+            p1score += 2
+            print(f"{p1name}: {p1score}")
+            print(f"{p2name}: {p2score}")
+        elif p2draw > p1draw:
+            print(f"{p2name} drew the high card")
+            p2score += 2
+            print(f"{p1name}: {p1score}")
+            print(f"{p2name}: {p2score}")
+        else:
+            if len(deck) < 2:
+            if p1score > p2score:
+                print(f"{p1name} has won")
+                break
+            elif p2score > p1score:
+                print(f"{p2name} has won")
+                break
+            else:
+                print("there is a tie")
+                break
+            p1draw = deck[random.randint(0, len(deck)-1)]
+            deck.pop(deck.index(p1draw))
+            p2draw = deck[random.randint(0, len(deck)-1)]
+            deck.pop(deck.index(p2draw))
+
+            if p1draw > p2draw:
+                print(f"{p1name} drew the high card")
+                p1score += 4
+                print(f"{p1name}: {p1score}")
+                print(f"{p2name}: {p2score}")
+            else:
+                print(f"{p2name} drew the high card")
+                p2score += 4
+                print(f"{p1name}: {p1score}")
+                print(f"{p2name}: {p2score}")
+
+        if len(deck) < 2:
+            if p1score > p2score:
+                print(f"{p1name} has won")
+                break
+            elif p2score > p1score:
+                print(f"{p2name} has won")
+                break
+            else:
+                print("there is a tie")
+                break
