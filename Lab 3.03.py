@@ -239,6 +239,10 @@ while True:
 
     p1name = input("Player 1's name: ")
     p2name = input("Player 2's name: ")
+
+    p1totscore = 0
+    p2totscore = 0
+
     running = True
     while running:
 
@@ -256,24 +260,16 @@ while True:
         if p1draw > p2draw:
             print(f"{p1name} drew the high card")
             p1score += 2
+            p1totscore += 2
             print(f"{p1name}: {p1score}")
             print(f"{p2name}: {p2score}")
         elif p2draw > p1draw:
             print(f"{p2name} drew the high card")
             p2score += 2
+            p2totscore += 2
             print(f"{p1name}: {p1score}")
             print(f"{p2name}: {p2score}")
         else:
-            if len(deck) < 2:
-            if p1score > p2score:
-                print(f"{p1name} has won")
-                break
-            elif p2score > p1score:
-                print(f"{p2name} has won")
-                break
-            else:
-                print("there is a tie")
-                break
             p1draw = deck[random.randint(0, len(deck)-1)]
             deck.pop(deck.index(p1draw))
             p2draw = deck[random.randint(0, len(deck)-1)]
@@ -282,21 +278,26 @@ while True:
             if p1draw > p2draw:
                 print(f"{p1name} drew the high card")
                 p1score += 4
+                p1totscore += 4
                 print(f"{p1name}: {p1score}")
                 print(f"{p2name}: {p2score}")
             else:
                 print(f"{p2name} drew the high card")
                 p2score += 4
+                p2totscore += 4
                 print(f"{p1name}: {p1score}")
                 print(f"{p2name}: {p2score}")
 
         if len(deck) < 2:
             if p1score > p2score:
                 print(f"{p1name} has won")
+                print(f"Final score\n{p1name}: {p1score}\n{p2name}: {p2score}")
                 break
             elif p2score > p1score:
                 print(f"{p2name} has won")
+                print(f"Final score\n{p1name}: {p1score}\n{p2name}: {p2score}")
                 break
             else:
                 print("there is a tie")
+                print(f"Final score\n{p1name}: {p1score}\n{p2name}: {p2score}")
                 break
